@@ -70,14 +70,12 @@ spec:
                 operator: In
                 values:
                 - amd64
-      imagePullSecrets:
-      - name: dockerhub-plasmacomputing
       hostNetwork: true
       hostPID: true
       hostIPC: true
       containers:
       - name: agent
-        image: plasmacomputing/etc:microai_sec_0.0.2
+        image: plasmacomputing/micro_ai_security:0.0.5
         securityContext:
           privileged: true
         envFrom:
