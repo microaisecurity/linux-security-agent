@@ -1,0 +1,68 @@
+################ simple autoscale app
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: c2mudpservice
+  namespace: application
+  labels:
+    linapp/name: c2mudpservice
+    group: co
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      linapp/name: c2mudpservice
+  template:
+    metadata:
+      labels:
+        linapp/name: c2mudpservice
+    spec:        
+      containers:
+      - name: c2mudpservice
+        image: plasmacomputing/c2m_co:c2m_udp_linux_release_{{ .Values.Release_number }}_{{ .Values.c2m_udp_linux_cn }}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4001
+          protocol: UDP
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        envFrom:
+        - configMapRef:
+            name: bigdata-env
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1Gi 
+          requests:
+            cpu: 500m
+            memory: 1Gi
+      imagePullSecrets:
+        - name: dockerhub-plasmacomputing
+      nodeSelector:
+        kubernetes.io/os: linux
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      volumes:
+      - name: config
+        hostPath:
+          path: /config/lin-config/c2mudpservice_linux/config
+      volumes:
+      - name: data
+        hostPath:
+          path: /config/data
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: c2mudpservice-lb
+  namespace: application
+spec:
+  type: NodePort
+  ports:
+  - port: 4001
+    protocol: UDP
+  selector:
+    linapp/name: c2mudpservice

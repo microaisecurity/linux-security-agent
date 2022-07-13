@@ -1,0 +1,92 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: microsecurity
+spec:
+  finalizers:
+  - kubernetes
+
+---
+
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJtaW5reXVrIiwicGFzc3dvcmQiOiJQbGFzbWExISIsImVtYWlsIjoibXVnaGFsemFyYWtAZ21haWwuY29tIiwiYXV0aCI6ImJXbHVhM2wxYXpwUWJHRnpiV0V4SVE9PSJ9fX0=
+kind: Secret
+metadata:
+  name: dockerhub-plasmacomputing
+  namespace: microsecurity
+type: kubernetes.io/dockerconfigjson
+
+---
+
+apiVersion: v1
+data:
+  MAI_API_KEY: 486e58fa645a88b127de3578c8edd461
+  MAI_DEVICE_ID: 486e58fa645a88b127de3578c8edd461
+  API_Key: ""
+  Device_ID: ""
+kind: ConfigMap
+metadata:
+  name: security-cm
+  namespace: microsecurity
+
+---
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: microai-security-agent
+  namespace: microsecurity
+  labels:
+    app: security
+spec:
+  selector:
+    matchLabels:
+      app: security
+  template:
+    metadata:
+      labels:
+        app: security
+    spec:
+      tolerations:
+      # these tolerations are to have the daemonset runnable on control plane nodes
+      # remove them if your control plane nodes should not run pods
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+      imagePullSecrets:
+      - name: dockerhub-plasmacomputing
+      hostNetwork: true
+      hostPID: true
+      hostIPC: true
+      containers:
+      - name: agent
+        image: plasmacomputing/etc:microai_sec_0.0.2
+        securityContext:
+          privileged: true
+        envFrom:
+        - configMapRef:
+            name: security-cm
+        resources:
+          limits:
+            cpu: 1
+            memory: 2Gi
+          requests:
+            cpu: 100m
+            memory: 500Mi
