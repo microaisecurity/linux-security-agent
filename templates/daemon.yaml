@@ -22,9 +22,6 @@ type: kubernetes.io/dockerconfigjson
 apiVersion: v1
 data:
   MAI_API_KEY: 486e58fa645a88b127de3578c8edd461
-  MAI_DEVICE_ID: 486e58fa645a88b127de3578c8edd461
-  API_Key: ""
-  Device_ID: ""
 kind: ConfigMap
 metadata:
   name: security-cm

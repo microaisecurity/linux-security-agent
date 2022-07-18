@@ -1,4 +1,6 @@
-Release_number: "2.14.0"
-c2m_mqtt_linux_cn: "30893"
-c2m_tcp_linux_cn: "30893"
-c2m_udp_linux_cn: "30893"
+image:
+  repository: "starburstdata/presto"
+  tag: 345-e.10
+nodeSelector:
+  nodepool: "linuxapp"
+MAI_API_KEY: ""
