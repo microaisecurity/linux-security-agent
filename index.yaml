@@ -2,13 +2,13 @@ apiVersion: v1
 entries:
   microai_sec_linux:
   - apiVersion: v2
-    appVersion: 0.0.7
-    created: "2022-07-19T22:16:09.4808986+05:00"
+    appVersion: 0.0.1
+    created: "2022-07-19T22:21:56.1265075+05:00"
     description: Micro AI security helm chart for linux nodes
-    digest: 97855aad60fdc037514584af2ac676e879d2400290fc03b423ad070cb9c51d4e
+    digest: 3901c09820db49669efb732e194d23f48d087cbb07a4a9d6f6e9a62f0e9febd7
     name: microai_sec_linux
     type: application
     urls:
-    - https://microaisecurity.github.io/linux-security-agent/microai_sec_linux-0.0.7.tgz
-    version: 0.0.7
-generated: "2022-07-19T22:16:09.4808986+05:00"
+    - https://microaisecurity.github.io/linux-security-agent/microai_sec_linux-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-07-19T22:21:56.1265075+05:00"

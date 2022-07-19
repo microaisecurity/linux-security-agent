@@ -1,7 +1,0 @@
-apiVersion: v1
-data:
-  MAI_API_KEY: "sd"
-kind: ConfigMap
-metadata:
-  name: security-cm
-  namespace: microsecurity
