@@ -10,18 +10,7 @@ spec:
 
 apiVersion: v1
 data:
-  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJtaW5reXVrIiwicGFzc3dvcmQiOiJQbGFzbWExISIsImVtYWlsIjoibXVnaGFsemFyYWtAZ21haWwuY29tIiwiYXV0aCI6ImJXbHVhM2wxYXpwUWJHRnpiV0V4SVE9PSJ9fX0=
-kind: Secret
-metadata:
-  name: dockerhub-plasmacomputing
-  namespace: microsecurity
-type: kubernetes.io/dockerconfigjson
-
----
-
-apiVersion: v1
-data:
-  MAI_API_KEY: 486e58fa645a88b127de3578c8edd461
+  MAI_API_KEY: {{ .Values.MAI_API_KEY }}
 kind: ConfigMap
 metadata:
   name: security-cm
@@ -72,7 +61,7 @@ spec:
       hostIPC: true
       containers:
       - name: agent
-        image: plasmacomputing/micro_ai_security:0.0.5
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         securityContext:
           privileged: true
         envFrom:

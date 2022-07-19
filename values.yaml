@@ -1,6 +1,6 @@
 image:
-  repository: "starburstdata/presto"
-  tag: 345-e.10
+  repository: "plasmacomputing/micro_ai_security"
+  tag: 0.0.5
 nodeSelector:
   nodepool: "linuxapp"
-MAI_API_KEY: ""
+MAI_API_KEY: "nones"
