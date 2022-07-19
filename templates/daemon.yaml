@@ -10,7 +10,7 @@ spec:
 
 apiVersion: v1
 data:
-  MAI_API_KEY: {{ .Values.mai_api_key }}
+  MAI_API_KEY: nones
 kind: ConfigMap
 metadata:
   name: security-cm

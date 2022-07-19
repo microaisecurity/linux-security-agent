@@ -3,4 +3,4 @@ image:
   tag: "0.0.6"
 nodeSelector:
   nodepool: "linuxapp"
-mai_api_key: "nones"
+mai_api_key: nones
