@@ -61,9 +61,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-
-
-helm repo add newrelic https://helm-charts.newrelic.com
-helm repo update
-kubectl create namespace newrelic ; helm upgrade --install newrelic-bundle newrelic/nri-bundle --set global.licenseKey=c644851097c40ffb2acb9aa4c08066748e0cNRAL --set global.cluster=kube  --namespace=newrelic --set newrelic-infrastructure.privileged=true --set global.lowDataMode=true --set ksm.enabled=true --set kubeEvents.enabled=true --set newrelic-pixie.enabled=true --set newrelic-pixie.apiKey=px-api-9f5b9b19-8e28-498d-bae4-14e5ff5d5fbb --set pixie-chart.enabled=true --set pixie-chart.deployKey=px-dep-1aae4475-08c3-4155-8b49-2e4b0813eb4d --set pixie-chart.clusterName=kube
