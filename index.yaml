@@ -2,13 +2,33 @@ apiVersion: v1
 entries:
   microai_sec_linux:
   - apiVersion: v2
-    appVersion: 0.0.5
-    created: "2022-07-14T03:00:05.9620793+05:00"
+    appVersion: 0.0.3
+    created: "2022-07-19T17:06:25.8867636+05:00"
     description: Micro AI security helm chart for linux nodes
-    digest: d30701ee1caf8f6a72c8e697c7a9013a26b3ea41badd5e0136e94d944088366c
+    digest: 9ce866a7cc9acf3efc828c85c6438ff231ece00819a936c8183b351f330d3f56
     name: microai_sec_linux
     type: application
     urls:
-    - https://zarakm.github.io/security/microai_sec_linux-0.0.1.tgz
-    version: 0.0.5
-generated: "2022-07-14T03:00:05.9610655+05:00"
+    - https://microaisecurity.github.io/linux-security-agent/microai_sec_linux-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-07-19T17:06:25.8847199+05:00"
+    description: Micro AI security helm chart for linux nodes
+    digest: 1e4a4dedfae79c03764838887a13523d4efe33cc053e156f81456c3186fe8a05
+    name: microai_sec_linux
+    type: application
+    urls:
+    - https://microaisecurity.github.io/linux-security-agent/microai_sec_linux-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-07-19T17:06:25.8837203+05:00"
+    description: Micro AI security helm chart for linux nodes
+    digest: 13da94a8168398d5a9adb59142ee65be19b5813df491cc5a0b2cdcf61de3c8f4
+    name: microai_sec_linux
+    type: application
+    urls:
+    - https://microaisecurity.github.io/linux-security-agent/microai_sec_linux-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-07-19T17:06:25.881753+05:00"
