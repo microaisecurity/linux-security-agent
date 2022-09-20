@@ -58,6 +58,11 @@ spec:
         envFrom:
         - configMapRef:
             name: security-cm
+        volumeMounts:
+        - mountPath: /etc/ssl
+          name: ssl
+        - mountPath: /home/security/config
+          name: config-volume
         resources:
           limits:
             cpu: 1
@@ -65,3 +70,12 @@ spec:
           requests:
             cpu: 100m
             memory: 500Mi
+      volumes:
+      - hostPath:
+          path: /etc/ssl
+          type: Directory
+        name: ssl
+      - configMap:
+          defaultMode: 420
+          name: config
+        name: config-volume

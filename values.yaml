@@ -1,6 +1,6 @@
 image:
   repository: "plasmacomputing/micro_ai_security"
-  tag: "0.0.6"
+  tag: "linux-amd64-1.0.11"
 nodeSelector:
   nodepool: "linuxapp"
-mai_api_key: "nill"
+mai_api_key: "647bba344396e7c8170902bcf2e155"

@@ -1,0 +1,36 @@
+apiVersion: v1
+data:
+  config.json: "{\r\n  \"General\": {\r\n    \"Device\": \"STWIN\",\r\n    \"FwVersion\":
+    \"1.2.3\",\r\n    \"APIkey\": \"\",\r\n    \"Activation_Base_Url\": \"cloud1-staging-api.micro.ai\",\r\n
+    \   \"Default_LAT\": 0,\r\n    \"Default_LON\": 0,\r\n    \"Location_Name\":\"Dallas\"\r\n
+    \ },\r\n  \"AI_general\": {\r\n    \"TrainingSecs\": 28800,\r\n    \"SplitCounter\":
+    20,\r\n    \"AiFeedRate\": 1000,\r\n    \"SmallThreshold\": 0.01,\r\n    \"InitialPeriodSecs\":
+    15,\r\n    \"HealthScoreDelay\": 10,\r\n    \"BoundsLimit\": false,\r\n    \"IsBuildModel\":
+    true\r\n  },\r\n  \"AI_Nominal\": {\r\n    \"TrainingSecs\": 1800,\r\n    \"IsBuildModel\":
+    true\r\n  },\r\n  \"Health_groups\": [\r\n    {\r\n      \"GroupID\": 1,\r\n      \"Hysteresis\":
+    20,\r\n      \"Hysteresis2\": 20,\r\n      \"Aging\": 0.9,\r\n      \"Memory\":
+    0.95,\r\n      \"Noise\": 0.05,\r\n      \"Intensity\": 2.5,\r\n      \"DTNM\":
+    40,\r\n      \"Golang_H\": {\r\n        \"RL\": 1000,\r\n        \"PdM\": \"1\",\r\n
+    \       \"K\": 0.02\r\n      }\r\n    }\r\n  ],\r\n  \"Y_Code\": {\r\n    \"Mode\":
+    1,\r\n    \"DeviceName\": \"STWIN test system\",\r\n    \"OutputLocation\": \"127.0.0.1:6379\",\r\n
+    \   \"Mode_Continuous\": {\r\n      \"Sync_freq\": 5000,\r\n      \"Max_async_freq\":
+    1000\r\n    },\r\n    \"Mode_Storage\": {\r\n      \"Max_Rows\": 50,\r\n      \"Max_Secs\":
+    600,\r\n      \"Post_Event_Send_Time_secs\": 600,\r\n      \"Sync_freq\": 5000,\r\n
+    \     \"Max_async_freq\": 1000\r\n    },\r\n    \"LaunchpadExporter\": {\r\n      \"Enabled\":
+    true,\r\n      \"Force_DEVICE_ID\": \"\"\r\n\r\n    },\r\n    \"ExternalExporter\":
+    {\r\n      \"ExternalExporterType\": \"redis\",\r\n      \"Https_Post_Endpoint\":
+    \"https://webhook.site/4b395597-64aa-4ebb-859b-a66faf222a3e\",\r\n      \"Output_Redis_Endpoint\":
+    \"192.168.2.171:6379\",\r\n      \"Output_MQTT\": {\r\n        \"Endpoint\": \"127.0.0.1\",\r\n
+    \       \"Port\": 1884,\r\n        \"Username\": \"\",\r\n        \"Password\":
+    \"\",\r\n        \"topic_prefix\": \"data\"\r\n      }\r\n    },\r\n    \"AIStudioExporter\":
+    {\r\n      \"Mode\": 0,\r\n      \"Output_MQTT\": {\r\n        \"Endpoint\": \"127.0.0.1\",\r\n
+    \       \"Port\": 1884,\r\n        \"Username\": \"\",\r\n        \"Password\":
+    \"\",\r\n        \"topic_prefix\": \"data\"\r\n      }\r\n    },\r\n    \"Email_Notification_Exporter\":
+    {\r\n      \"smtp_host\": \"email-smtp.us-west-2.amazonaws.com\",\r\n      \"smtp_port\":
+    587,\r\n      \"smtp_username\": \"\",\r\n      \"smtp_password\": \"\",\r\n      \"smtp_from_emailid\":
+    \"\",\r\n      \"smtp_to_email_list\": \"faizan.ansari@micro.ai, Kishen.Patel@micro.ai\"\r\n
+    \   }\r\n  }\r\n}"
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: microsecurity
